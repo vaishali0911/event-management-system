@@ -12,7 +12,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create registration" do
     assert_difference("Registration.count") do
-      post registrations_url, params: { registration: { Events_id: @registration.Events_id, Users_id: @registration.Users_id } }, as: :json
+      post registrations_url, params: { registration: { events_id: @registration.events_id, users_id: @registration.users_id } }, as: :json
     end
 
     assert_response :created
@@ -24,7 +24,7 @@ class RegistrationsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update registration" do
-    patch registration_url(@registration), params: { registration: { Events_id: @registration.Events_id, Users_id: @registration.Users_id } }, as: :json
+    patch registration_url(@registration), params: { registration: { events_id: @registration.events_id, users_id: @registration.users_id } }, as: :json
     assert_response :success
   end
 

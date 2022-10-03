@@ -38,6 +38,13 @@ class RegistrationsController < ApplicationController
     @registration.destroy
   end
 
+  def getRegisteredUsers
+    # p Registration.column_names
+    usersList = Registration.where(events_id: params[:events_id]).pluck(:users_id)
+    users = User.where(id: usersList)
+    p users
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_registration
@@ -46,6 +53,6 @@ class RegistrationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def registration_params
-      params.require(:registration).permit(:Users_id, :Events_id)
+      params.require(:registration).permit(:users_id, :events_id)
     end
 end

@@ -15,10 +15,12 @@ class EventsController < ApplicationController
 
   # POST /events
   def create
-    @event = Event.new(event_params)
+    @event = Event.new(post_params)
+
+    @text = "Event is successfully created!"
 
     if @event.save
-      render json: @event, status: :created, location: @event
+      render json: @text, status: 200, location: @event
     else
       render json: @event.errors, status: :unprocessable_entity
     end
@@ -31,6 +33,11 @@ class EventsController < ApplicationController
     else
       render json: @event.errors, status: :unprocessable_entity
     end
+  end
+
+  def getEventDetails
+    @eventDetails = Event.where(event_name: params[:event_name]).first
+    render json:@eventDetails
   end
 
   # DELETE /events/1
@@ -47,5 +54,9 @@ class EventsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def event_params
       params.fetch(:event, {})
+    end
+
+    def post_params
+      params.require(:event).permit(:event_name, :event_description, :start_date_time, :end_date_time)
     end
 end

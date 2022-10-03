@@ -1,4 +1,4 @@
 class Registration < ApplicationRecord
-  belongs_to :Users
-  belongs_to :Events
+  belongs_to :users, class_name:"User"
+  belongs_to :events, class_name:"Event"
 end

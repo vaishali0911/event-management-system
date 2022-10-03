@@ -17,6 +17,3 @@ Event.create!([
                 {event_name: 'Fall Destinations', event_description: 'Fall Destinations', start_date_time: DateTime.parse("05/10/2022 13:00"), end_date_time: DateTime.parse("05/10/2022 15:00")}
               ])
 
-Registration.create!([
-                       {Users_id: 2, Events_id: 1}
-                     ])

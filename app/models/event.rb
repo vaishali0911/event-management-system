@@ -1,4 +1,4 @@
 class Event < ApplicationRecord
-  has_many :users
-  belongs_to :registration
+  # self.primary_key = 'event_name'
+  # has_many :registrations, foreign_key: :events_id
 end
