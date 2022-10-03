@@ -42,7 +42,13 @@ class RegistrationsController < ApplicationController
     # p Registration.column_names
     usersList = Registration.where(events_id: params[:events_id]).pluck(:users_id)
     users = User.where(id: usersList)
-    p users
+
+    if(users.size > 0)
+      render json: users, status: 200
+    else
+      render json: "No user is registered!"
+    end
+
   end
 
   private
